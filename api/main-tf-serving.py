@@ -60,3 +60,6 @@ async def predict(
 
 if __name__ == "__main__":
     uvicorn.run(app, host='localhost', port=8000)
+
+
+#(base) laaria@laaria-HP-Pavilion-Gaming-Notebook:~$ docker run -t --rm -p 8304:8501 -v /home/laaria/Desktop/PROJECTS/potato-disease-classifier:/potato-disease-classifier tensorflow/serving --rest_api_port=8501 --model_config_file=/potato-disease-classifier/models.config

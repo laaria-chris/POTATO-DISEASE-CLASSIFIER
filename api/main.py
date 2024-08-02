@@ -7,6 +7,7 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
+from tensorflow import keras
 
 app = FastAPI()
 
@@ -22,7 +23,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("/home/laaria/Desktop/PROJECTS/POTATO-DISEASE CLASSIFIER/models/potatoes.h5")
+   # Use TFSMLayer to load the TensorFlow SavedModel
+MODEL = tf.keras.models.load_model("/home/laaria/Desktop/PROJECTS/potato-disease-classifier/potatoes.h5")
 
 CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
 
