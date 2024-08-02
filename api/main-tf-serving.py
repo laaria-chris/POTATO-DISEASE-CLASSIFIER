@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-endpoint = "http://localhost:8501/v1/models/potatoes_model:predict"
+endpoint = "http://localhost:8502/v1/models/potatoes_model:predict"
 
 CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
 
@@ -49,8 +49,9 @@ async def predict(
     response = requests.post(endpoint, json=json_data)
     prediction = np.array(response.json()["predictions"][0])
 
-    predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
-    confidence = np.max(predictions[0])
+    predicted_class = CLASS_NAMES[np.argmax(prediction)]
+    confidence = np.max(prediction)
+    
     return {
         'class': predicted_class,
         'confidence': float(confidence)
